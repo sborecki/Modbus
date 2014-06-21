@@ -17,9 +17,12 @@ namespace Modbus_RS232
         {
             InitializeComponent();
             string[] ports = System.IO.Ports.SerialPort.GetPortNames();
-            comboPort.Items.AddRange(ports);
-            comboPort.SelectedIndex = comboPort.Items.Count-1;
-            comboBaund.SelectedItem = "9600";
+            comboPortMaster.Items.AddRange(ports);
+            comboPortSlave.Items.AddRange(ports);
+            comboPortMaster.SelectedIndex = comboPortMaster.Items.Count-1;
+            comboPortSlave.SelectedItem = comboPortSlave.Items.Count - 1;
+            comboBaundMaster.SelectedItem = "9600";
+            comboBoxBaundSlave.SelectedItem = "9600";
         }
 
         private void numericTimeout_ValueChanged(object sender, EventArgs e)
@@ -30,12 +33,12 @@ namespace Modbus_RS232
 
         private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
         {
-            serialPort.BaudRate = Int32.Parse(comboBaund.SelectedItem.ToString());
+            serialPort.BaudRate = Int32.Parse(comboBaundMaster.SelectedItem.ToString());
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            serialPort.PortName = comboPort.SelectedItem.ToString();
+            serialPort.PortName = comboPortMaster.SelectedItem.ToString();
         }
 
         private byte lrc(byte[] b)
@@ -61,6 +64,11 @@ namespace Modbus_RS232
             {
                 textBoxConsole.AppendText(ex.ToString());
             }
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
