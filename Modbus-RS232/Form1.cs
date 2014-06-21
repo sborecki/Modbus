@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO.Ports;
 
+
+//mój komentarz co i tak nic nie dodaje
 namespace Modbus_RS232
 {
     public partial class Form1 : Form
